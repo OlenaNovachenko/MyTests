@@ -13,15 +13,11 @@ test.describe('Login tests', () => {
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
         await loginPage.open();
-    });
-
-    test('Login with valid data', async ({ page }) => {
         await loginPage.login(users.stage.admin.email, users.stage.admin.password);
-        await expect(page).toHaveURL('http://omega-stage.qa.nolimit.school/vertical/default-dashboard');
     });
 
-    test('Open sign up page', async ({ page }) => {
-        await loginPage.clicksignUp();
-        await expect(page).toHaveURL('http://omega-stage.qa.nolimit.school/sign-up');
+    test.only('Open App Page', async ({ page }) => {
+        await mainPage.openAppointmentsPage();
+        await expect(page).toHaveURL('http:///omega-stage.qa.nolimit.school/vertical/appointments');
     });
 });
